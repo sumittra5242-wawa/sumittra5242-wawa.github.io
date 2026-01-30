@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรไฟล์ - สุมิตา บุบพิ</title>
+    <title>Portfolio - สุมิตา บุบพิ (วาวา)</title>
     <link rel="icon" type="image/x-icon" href="/วาวา.jpg">
     <style>
         * {
@@ -12,24 +12,215 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 24px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-content .title {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
         }
 
-        .profile-card {
+        .avatar-large {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* About Section */
+        .about-section {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 450px;
-            width: 100%;
-            overflow: hidden;
-            animation: slideUp 0.6s ease-out;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.8s ease-out;
         }
 
         @keyframes slideUp {
@@ -43,189 +234,563 @@
             }
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 30px;
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 15px;
             text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
             color: white;
         }
 
-        .avatar {
-            width: 120px;
-            height: 120px;
+        .skill-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .skill-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .skill-level {
+            margin-top: 15px;
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            animation: progressBar 1.5s ease-out;
+        }
+
+        @keyframes progressBar {
+            from {
+                width: 0;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
             background: white;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            object-fit: cover;
-            font-size: 48px;
-            font-weight: bold;
-            color: #667eea;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .name {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 5px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .nickname {
-            font-size: 18px;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .content {
+        .contact-card {
+            background: var(--bg-light);
             padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
 
-        .info-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
+            margin: 0 auto 15px;
+            transition: all 0.3s;
         }
 
-        .icon svg {
-            width: 20px;
-            height: 20px;
+        .contact-card:hover .contact-icon {
+            background: white;
+        }
+
+        .contact-icon svg {
+            width: 30px;
+            height: 30px;
             fill: white;
+            transition: fill 0.3s;
         }
 
-        .info-content {
-            flex: 1;
+        .contact-card:hover .contact-icon svg {
+            fill: var(--primary-color);
         }
 
-        .label {
-            font-size: 12px;
-            color: #6c757d;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-            font-weight: 600;
+        .contact-card h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
         }
 
-        .value {
-            font-size: 16px;
-            color: #212529;
+        .contact-card p {
+            font-size: 14px;
+            opacity: 0.8;
             word-break: break-word;
         }
 
-        .footer {
+        /* Footer */
+        footer {
             text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #6c757d;
-            font-size: 14px;
+            padding: 30px;
+            margin-top: 30px;
+            color: white;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 30px;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content .subtitle {
+                font-size: 20px;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .avatar-large {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="profile-card">
-        <div class="header">
-            <img src="/วาวา.jpg" class="avatar" />
-            <div class="name">สุมิตา บุบพิ</div>
-            <div class="nickname">วาวา</div>
-        </div>
-        
-        <div class="content">
-            <div class="info-item">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                    </svg>
-                </div>
-                <div class="info-content">
-                    <div class="label">ชื่อ</div>
-                    <div class="value">นางสาวสุมิตา บุบพิ</div>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">WAWA Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a href="#skills">ทักษะ</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>สุมิตา บุบพิ</h1>
+                <div class="subtitle">วาวา (WAWA)</div>
+                <div class="title">นักศึกษาสาขาเทคโนโลยีสารสนเทศ ปี 1</div>
+                <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
+                <p>มุ่งมั่นในการพัฒนาทักษะด้านการพัฒนาแอปพลิเคชัน การออกแบบ UX/UI และการออกแบบสินค้าและบริการ</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">ติดต่อฉัน</a>
+                    <a href="#about" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
                 </div>
             </div>
+            <div class="hero-image">
+                <img src="/วาวา.jpg" alt="Sumita Bubpi" class="avatar-large">
+            </div>
+        </section>
 
-            <div class="info-item">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <h2 class="section-title">เกี่ยวกับฉัน</h2>
+            <p class="section-subtitle">ความสนใจและข้อมูลส่วนตัว</p>
+            
+            <div class="about-content">
+                <div class="info-card slide-in-left">
+                    <h3>💡 ความสนใจหลัก</h3>
+                    <ul class="info-list">
+                        <li>การสร้างและพัฒนาแอปพลิเคชัน</li>
+                        <li>การออกแบบ UX/UI</li>
+                        <li>การออกแบบสินค้าและบริการ</li>
+                        <li>Frontend Development</li>
+                    </ul>
                 </div>
-                <div class="info-content">
-                    <div class="label">ชื่อเล่น</div>
-                    <div class="value">วาวา</div>
+
+                <div class="info-card slide-in-right">
+                    <h3>🎓 ข้อมูลการศึกษา</h3>
+                    <ul class="info-list">
+                        <li>นักศึกษาชั้นปีที่ 1</li>
+                        <li>สาขาเทคโนโลยีสารสนเทศ (IT)</li>
+                        <li>คณะวิทยาศาสตร์</li>
+                        <li>มหาวิทยาลัยราชภัฏอุดรธานี</li>
+                    </ul>
+                </div>
+
+                <div class="info-card slide-in-left">
+                    <h3>🎯 เป้าหมาย</h3>
+                    <p>
+                        ฉันมุ่งมั่นที่จะพัฒนาทักษะทางด้านเทคโนโลยีสารสนเทศ โดยเฉพาะในด้านการพัฒนาเว็บแอปพลิเคชันและการออกแบบ เพื่อสร้างสรรค์ผลงานที่มีคุณภาพและตอบโจทย์ผู้ใช้งานอย่างแท้จริง
+                    </p>
+                </div>
+
+                <div class="info-card slide-in-right">
+                    <h3>🌟 จุดเด่น</h3>
+                    <ul class="info-list">
+                        <li>ความคิดสร้างสรรค์ในการออกแบบ</li>
+                        <li>ความใส่ใจในรายละเอียด</li>
+                        <li>ความกระตือรือร้นในการเรียนรู้</li>
+                        <li>ทำงานเป็นทีมได้ดี</li>
+                    </ul>
                 </div>
             </div>
+        </section>
 
-            <div class="info-item">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                    </svg>
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title">ทักษะและเทคโนโลยี</h2>
+            <p class="section-subtitle">เครื่องมือและภาษาที่ใช้ในการพัฒนา</p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Frontend Development</h3>
+                    <p>พัฒนาส่วนหน้าเว็บไซต์ที่สวยงามและใช้งานง่าย</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
                 </div>
-                <div class="info-content">
-                    <div class="label">คณะ</div>
-                    <div class="value">คณะวิทยาศาสตร์</div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">📝</div>
+                    <h3>HTML</h3>
+                    <p>โครงสร้างพื้นฐานของเว็บไซต์</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎭</div>
+                    <h3>CSS</h3>
+                    <p>การจัดรูปแบบและออกแบบหน้าเว็บ</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>เพิ่มความสามารถเชิงโต้ตอบให้เว็บไซต์</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 65%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database Management</h3>
+                    <p>การจัดการและออกแบบฐานข้อมูล</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🐬</div>
+                    <h3>MySQL</h3>
+                    <p>ระบบจัดการฐานข้อมูลเชิงสัมพันธ์</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">✨</div>
+                    <h3>UX/UI Design</h3>
+                    <p>การออกแบบประสบการณ์และส่วนติดต่อผู้ใช้</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Product Design</h3>
+                    <p>การออกแบบสินค้าและบริการ</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="info-item">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
-                    </svg>
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">ติดต่อฉัน</h2>
+            <p class="section-subtitle">ช่องทางการติดต่อและโซเชียลมีเดีย</p>
+
+            <div class="contact-grid">
+                <a href="mailto:68040233115@udru.ac.th" class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h3>Email</h3>
+                    <p>68040233115@udru.ac.th</p>
+                </a>
+
+                <a href="https://github.com/sumittra5242-wawa" target="_blank" class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>github.com/sumittra5242-wawa</p>
+                </a>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
+                    </div>
+                    <h3>ชื่อ</h3>
+                    <p>นางสาวสุมิตา บุบพิ (วาวา)</p>
                 </div>
-                <div class="info-content">
-                    <div class="label">สาขา</div>
-                    <div class="value">เทคโนโลยีสารสนเทศ (IT)</div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        </svg>
+                    </div>
+                    <h3>สถาบันการศึกษา</h3>
+                    <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
                 </div>
             </div>
+        </section>
 
-            <div class="info-item">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                </div>
-                <div class="info-content">
-                    <div class="label">อีเมล</div>
-                    <div class="value">68040233115@udru.ac.th</div>
-                </div>
-            </div>
-
-            <a href="https://github.com/sumittra5242-wawa" target="_blank" class="info-item">
-                <div class="icon">
-                    <svg fill="#ffffff" viewBox="0 -0.5 25 25" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m12.301 0h.093c2.242 0 4.34.613 6.137 1.68l-.055-.031c1.871 1.094 3.386 2.609 4.449 4.422l.031.058c1.04 1.769 1.654 3.896 1.654 6.166 0 5.406-3.483 10-8.327 11.658l-.087.026c-.063.02-.135.031-.209.031-.162 0-.312-.054-.433-.144l.002.001c-.128-.115-.208-.281-.208-.466 0-.005 0-.01 0-.014v.001q0-.048.008-1.226t.008-2.154c.007-.075.011-.161.011-.249 0-.792-.323-1.508-.844-2.025.618-.061 1.176-.163 1.718-.305l-.076.017c.573-.16 1.073-.373 1.537-.642l-.031.017c.508-.28.938-.636 1.292-1.058l.006-.007c.372-.476.663-1.036.84-1.645l.009-.035c.209-.683.329-1.468.329-2.281 0-.045 0-.091-.001-.136v.007c0-.022.001-.047.001-.072 0-1.248-.482-2.383-1.269-3.23l.003.003c.168-.44.265-.948.265-1.479 0-.649-.145-1.263-.404-1.814l.011.026c-.115-.022-.246-.035-.381-.035-.334 0-.649.078-.929.216l.012-.005c-.568.21-1.054.448-1.512.726l.038-.022-.609.384c-.922-.264-1.981-.416-3.075-.416s-2.153.152-3.157.436l.081-.02q-.256-.176-.681-.433c-.373-.214-.814-.421-1.272-.595l-.066-.022c-.293-.154-.64-.244-1.009-.244-.124 0-.246.01-.364.03l.013-.002c-.248.524-.393 1.139-.393 1.788 0 .531.097 1.04.275 1.509l-.01-.029c-.785.844-1.266 1.979-1.266 3.227 0 .025 0 .051.001.076v-.004c-.001.039-.001.084-.001.13 0 .809.12 1.591.344 2.327l-.015-.057c.189.643.476 1.202.85 1.693l-.009-.013c.354.435.782.793 1.267 1.062l.022.011c.432.252.933.465 1.46.614l.046.011c.466.125 1.024.227 1.595.284l.046.004c-.431.428-.718 1-.784 1.638l-.001.012c-.207.101-.448.183-.699.236l-.021.004c-.256.051-.549.08-.85.08-.022 0-.044 0-.066 0h.003c-.394-.008-.756-.136-1.055-.348l.006.004c-.371-.259-.671-.595-.881-.986l-.007-.015c-.198-.336-.459-.614-.768-.827l-.009-.006c-.225-.169-.49-.301-.776-.38l-.016-.004-.32-.048c-.023-.002-.05-.003-.077-.003-.14 0-.273.028-.394.077l.007-.003q-.128.072-.08.184c.039.086.087.16.145.225l-.001-.001c.061.072.13.135.205.19l.003.002.112.08c.283.148.516.354.693.603l.004.006c.191.237.359.505.494.792l.01.024.16.368c.135.402.38.738.7.981l.005.004c.3.234.662.402 1.057.478l.016.002c.33.064.714.104 1.106.112h.007c.045.002.097.002.15.002.261 0 .517-.021.767-.062l-.027.004.368-.064q0 .609.008 1.418t.008.873v.014c0 .185-.08.351-.208.466h-.001c-.119.089-.268.143-.431.143-.075 0-.147-.011-.214-.032l.005.001c-4.929-1.689-8.409-6.283-8.409-11.69 0-2.268.612-4.393 1.681-6.219l-.032.058c1.094-1.871 2.609-3.386 4.422-4.449l.058-.031c1.739-1.034 3.835-1.645 6.073-1.645h.098-.005zm-7.64 17.666q.048-.112-.112-.192-.16-.048-.208.032-.048.112.112.192.144.096.208-.032zm.497.545q.112-.08-.032-.256-.16-.144-.256-.048-.112.08.032.256.159.157.256.047zm.48.72q.144-.112 0-.304-.128-.208-.272-.096-.144.08 0 .288t.272.112zm.672.673q.128-.128-.064-.304-.192-.192-.32-.048-.144.128.064.304.192.192.32.044zm.913.4q.048-.176-.208-.256-.24-.064-.304.112t.208.24q.24.097.304-.096zm1.009.08q0-.208-.272-.176-.256 0-.256.176 0 .208.272.176.256.001.256-.175zm.929-.16q-.032-.176-.288-.144-.256.048-.224.24t.288.128.225-.224z"></path></g></svg>
-                </div>
-                <div class="info-content">
-                    <div class="label">Git Hub</div>
-                    <div class="value">https://github.com/sumittra5242-wawa</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="footer">
-            มหาวิทยาลัยราชภัฏอุดรธานี
-        </div>
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Sumita Bubpi (Wawa) - Portfolio Website</p>
+            <p>นักศึกษาสาขาเทคโนโลยีสารสนเทศ คณะวิทยาศาสตร์ มหาวิทยาลัยราชภัฏอุดรธานี</p>
+        </footer>
     </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .info-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
